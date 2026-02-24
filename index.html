@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>도그비앤비 | DogBnB</title>
+<style>
+    /* 기본 설정 */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Pretendard',sans-serif; }
+    body, html { 
+        width:100%; 
+        background:#000; 
+        overflow-x:hidden; /* 가로 스크롤 방지 */
+        overflow-y:auto;   /* 세로 스크롤 허용 (푸터를 보기 위함) */
+    }
+
+    /* 헤더 로고 */
+    .header-logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 20;
+    }
+    .header-logo img {
+        width: 120px;
+        height: auto;
+    }
+
+    /* 슬라이더 컨테이너 */
+    .slider-container {
+        position: relative;
+        width: 100%;
+        height: 100vh; /* 첫 화면을 꽉 채움 */
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .slider-wrapper {
+        display: flex;
+        height: 100%;
+        transition: transform 1s ease;
+    }
+
+    .slide {
+        min-width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.4); /* 이미지를 조금 더 어둡게 하여 글자 강조 */
+    }
+
+    /* 텍스트 오버레이 */
+    .content-overlay {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        display: flex; flex-direction: column; justify-content: center;
+        padding-left: 10%; color: white; z-index: 10;
+        pointer-events: none; /* 클릭 이벤트가 뒤로 전달되도록 함 */
+    }
+    .main-text { 
+        font-size: 3.5rem; 
+        font-weight: 700; 
+        margin-bottom: 20px; 
+        text-shadow: 2px 2px 15px rgba(0,0,0,0.7);
+        line-height: 1.2;
+    }
+    .sub-text { font-size: 1.8rem; font-weight: 300; line-height: 1.6; }
+
+    /* 앱 다운로드 버튼 */
+    .app-links {
+        position: absolute; right: 5%; top: 50%;
+        transform: translateY(-50%);
+        display: flex; flex-direction: column; gap: 20px;
+        z-index: 15;
+    }
+    .app-button {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 15px 25px; border-radius: 15px;
+        display: flex; align-items: center;
+        text-decoration: none; color: white; transition: 0.3s;
+    }
+    .app-button:hover {
+        background: rgba(255,255,255,0.2);
+        transform: scale(1.05);
+    }
+    .app-button img { width: 25px; margin-right: 15px; }
+    .app-button div { display: flex; flex-direction: column; }
+    .app-button span { font-size: 10px; opacity: 0.8; }
+    .app-button strong { font-size: 16px; }
+
+    /* 푸터 스타일 */
+    footer {
+        background-color: #111; 
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        z-index: 10;
+        color: white;
+    }
+
+    .footer-menu {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-bottom: 40px;
+    }
+
+    .footer-menu a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: 0.3s;
+    }
+
+    .footer-menu a:hover {
+        opacity: 0.7;
+    }
+
+    /* 반응형 대응 */
+    @media (max-width:768px){
+        .main-text { font-size: 2.2rem; }
+        .sub-text { font-size: 1.2rem; }
+        .app-links { 
+            bottom: 10%; top: auto; right: 50%; 
+            transform: translateX(50%); flex-direction: row; 
+            width: 90%; justify-content: center;
+        }
+        .header-logo img { width: 80px; }
+        .footer-menu { gap: 20px; }
+        .footer-menu a { font-size: 14px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="header-logo">
+    <img src="5.jpg" alt="도그비앤비 로고">
+</div>
+
+<div class="slider-container">
+    <div class="slider-wrapper" id="slider">
+        <div class="slide" style="background-image:url('1.jpg');"></div>
+        <div class="slide" style="background-image:url('2.jpg');"></div>
+        <div class="slide" style="background-image:url('3.jpg');"></div>
+        <div class="slide" style="background-image:url('4.jpg');"></div>
+    </div>
+
+    <div class="content-overlay">
+        <h1 class="main-text">A FRIEND WHO WILL ALWAYS<br>STAY BY MY SIDE</h1>
+        <p class="sub-text">도그비앤비는 사람과 반려동물이<br>함께 하는 세상을 응원합니다.</p>
+    </div>
+
+    <div class="app-links">
+        <a href="#" class="app-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg">
+            <div><span>Download on the</span><strong>App Store</strong></div>
+        </a>
+        <a href="#" class="app-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Google_Play_logo_2022.svg">
+            <div><span>GET IT ON</span><strong>Google Play</strong></div>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        
+        <div class="footer-menu">
+            <a href="#">ABOUT US</a>
+            <a href="#">TEAM DOGBNB INN</a>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <span style="color: #ffffff; font-size: 14px; font-weight: 600; letter-spacing: 0.5px;">
+                Copyright © 2026 DogBnB. All rights reserved.
+            </span>
+        </div>
+
+        <div style="margin-bottom: 25px;">
+            <p style="color: rgba(255, 255, 255, 0.6); font-size: 12px; line-height: 1.6; margin: 0;">
+                <strong>Rights:</strong> All contents of this service are protected under patent and trademark laws.
+            </p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); width: 40px; margin: 20px auto;">
+
+        <div style="display: flex; justify-content: center; gap: 25px;">
+            <a href="#" style="color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 11px;">Privacy Policy</a>
+            <a href="#" style="color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 11px;">Terms of Use</a>
+            <a href="#" style="color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 11px;">Sales and Refunds</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const slider = document.getElementById('slider');
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let index = 0;
+
+    function nextSlide(){
+        index++;
+        slider.style.transition = 'transform 1s ease';
+        slider.style.transform = `translateX(-${index * 100}%)`;
+
+        if(index === total){
+            setTimeout(() => {
+                slider.style.transition = 'none';
+                slider.style.transform = 'translateX(0)';
+                index = 0;
+            }, 1000);
+        }
+    }
+
+    setInterval(nextSlide, 4000);
+</script>
+</body>
+</html>
