@@ -65,7 +65,21 @@
         font-size: 11px; font-weight: 900; border-radius: 3px; 
     }
 
-    /* 반응형 대응 (모바일 로고 크기 조절) */
+    /* 오버레이 팝업 내부 공통 스타일 (사진 출력 핵심) */
+    .brand-content {
+        text-align: center;
+        padding: 60px 30px;
+        border-radius: 20px;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        min-height: 500px; /* 모바일에서 최소 높이 확보 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* 반응형 대응 */
     @media (max-width:768px){
         .header-logo { top: 15px; left: 15px; }
         .header-logo img { width: 70px; }
@@ -74,6 +88,7 @@
         .app-links { bottom: 10%; top: auto; right: 50%; transform: translateX(50%); flex-direction: row; width: 90%; justify-content: center; }
         .footer-menu { gap: 20px; }
         .footer-menu a { font-size: 14px; }
+        .brand-content { padding: 40px 20px; min-height: 450px; } /* 모바일 패딩 및 높이 조정 */
     }
 </style>
 </head>
@@ -108,7 +123,7 @@
     <div style="max-width:800px; margin:0 auto; color:white; position:relative;">
         <button onclick="closeBrandStory()" style="position:fixed; top:20px; right:20px; background:none; border:none; color:white; font-size:40px; cursor:pointer;">&times;</button>
         
-        <div id="content-about" style="display:none; text-align:center; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('about_bg.jpg'); background-size: cover; background-position: center; padding: 60px 30px; border-radius: 20px;">
+        <div id="content-about" class="brand-content" style="display:none; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('about_bg.jpg');">
             <h2 style="font-size:2.5rem; color:var(--primary); margin-bottom:40px; letter-spacing:2px;">ABOUT US</h2>
             <p style="font-size:1.15rem; line-height:2.2; word-break:keep-all; color: #eee; font-weight: 300; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);">
                 At DogBnB, our mission is to empower <br>
@@ -123,7 +138,7 @@
             </p>
         </div>
 
-        <div id="content-team" style="display:none; text-align:center; background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('team_bg.png'); background-size: cover; background-position: center; padding: 60px 30px; border-radius: 20px;">
+        <div id="content-team" class="brand-content" style="display:none; background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('team_bg.png');">
             <h2 style="font-size:2.5rem; color:var(--primary); margin-bottom:40px;">TEAM DOGBNB</h2>
             <p style="font-size:1.1rem; line-height:1.8; word-break:keep-all; text-align:left; color: white; text-shadow: 1px 1px 8px rgba(0,0,0,1);">
                 Founded in 2013 and inspired by <strong>two beloved Retrievers</strong>, <br>
