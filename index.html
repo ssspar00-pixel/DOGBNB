@@ -7,9 +7,7 @@
 <style>
     :root { --primary: #FF7E67; } 
     * { margin:0; padding:0; box-sizing:border-box; font-family:'Pretendard',sans-serif; }
-    body, html { 
-        width:100%; background:#000; overflow-x:hidden; overflow-y:auto;
-    }
+    body, html { width:100%; background:#000; overflow-x:hidden; overflow-y:auto; }
 
     /* 헤더 로고 */
     .header-logo { position: absolute; top: 20px; left: 20px; z-index: 20; }
@@ -48,15 +46,25 @@
     /* 푸터 스타일 */
     footer { background-color: #111; padding: 60px 20px; text-align: center; position: relative; z-index: 10; color: white; }
     .footer-menu { display: flex; justify-content: center; gap: 50px; margin-bottom: 30px; }
-    .footer-menu a { color: #fff; text-decoration: none; font-size: 18px; font-weight: 700; transition: 0.3s; }
+    .footer-menu a { color: #fff; text-decoration: none; font-size: 18px; font-weight: 700; transition: 0.3s; cursor: pointer; }
     .footer-menu a:hover { color: var(--primary); }
+
+    /* SNS 그룹 (수평 정렬 & 좁은 간격) */
+    .sns-group { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 25px; }
+    .sns-group a { display: flex; align-items: center; transition: 0.3s; text-decoration: none; }
+    .sns-group a:hover { transform: scale(1.1); }
+    
+    .naver-box { 
+        background-color: #2DB400; color: white; width: 20px; height: 20px; 
+        display: flex; align-items: center; justify-content: center; 
+        font-size: 11px; font-weight: 900; border-radius: 3px; 
+    }
 
     /* 반응형 대응 */
     @media (max-width:768px){
         .main-text { font-size: 2.2rem; }
         .sub-text { font-size: 1.2rem; }
         .app-links { bottom: 10%; top: auto; right: 50%; transform: translateX(50%); flex-direction: row; width: 90%; justify-content: center; }
-        .header-logo img { width: 80px; }
         .footer-menu { gap: 20px; }
         .footer-menu a { font-size: 14px; }
     }
@@ -64,9 +72,7 @@
 </head>
 <body>
 
-<div class="header-logo">
-    <img src="5.jpg" alt="도그비앤비 로고">
-</div>
+<div class="header-logo"><img src="5.jpg" alt="도그비앤비 로고"></div>
 
 <div class="slider-container">
     <div class="slider-wrapper" id="slider">
@@ -75,21 +81,19 @@
         <div class="slide" style="background-image:url('3.jpg');"></div>
         <div class="slide" style="background-image:url('4.jpg');"></div>
     </div>
-
     <div class="content-overlay">
         <h1 class="main-text">A FRIEND WHO WILL ALWAYS<br>STAY BY MY SIDE</h1>
         <p class="sub-text">도그비앤비는 사람과 반려동물이<br>함께 하는 세상을 응원합니다.</p>
     </div>
-
     <div class="app-links">
         <a href="#" class="app-button">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg">
             <div><span>Download on the</span><strong>App Store</strong></div>
         </a>
         <a href="#" class="app-button">
-        <img src="google_play.png" alt="Google Play">
-        <div><span>GET IT ON</span><strong>Google Play</strong></div>
-    </a>
+            <img src="google_play.png" alt="Google Play">
+            <div><span>GET IT ON</span><strong>Google Play</strong></div>
+        </a>
     </div>
 </div>
 
@@ -98,37 +102,36 @@
         <button onclick="closeBrandStory()" style="position:fixed; top:20px; right:20px; background:none; border:none; color:white; font-size:40px; cursor:pointer;">&times;</button>
         
         <div id="content-about" style="display:none; text-align:center; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('about_bg.jpg'); background-size: cover; background-position: center; padding: 60px 30px; border-radius: 20px;">
-            <h2 style="font-size:2.5rem; color:var(--primary); margin-bottom:40px; letter-spacing:2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8);">ABOUT US</h2>
+            <h2 style="font-size:2.5rem; color:var(--primary); margin-bottom:40px; letter-spacing:2px;">ABOUT US</h2>
             <p style="font-size:1.15rem; line-height:2.2; word-break:keep-all; color: #eee; font-weight: 300; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);">
-                At DogBnB, our mission is to empower <br>
-                <strong>Dog Owners and their Companions</strong> <br>
-                to lead happier, more fulfilling lives. <br><br>
+    At DogBnB, our mission is to empower <br>
+    <strong>Dog Owners and their Companions</strong> <br>
+    to lead happier, more fulfilling lives. <br><br>
 
-                We strive to be a warm, reliable partner, <br>
-                always ready to support fellow dog lovers <br>
-                whenever they need a hand. <br><br>
+    We strive to be a warm, reliable partner, <br>
+    always ready to support fellow dog lovers <br>
+    whenever they need a hand. <br><br>
 
-                To us, a dog is more than just an animal—<br>
-                <strong>They are Family.</strong> <br>
-                Their happiness is, and always will be, our own.
-            </p>
+    To us, a dog is more than just an animal—<br>
+    <strong>They are Family.</strong> <br>
+    Their happiness is, and always will be, our own.
+</p>
         </div>
 
         <div id="content-team" style="display:none; text-align:center; background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('team_bg.png'); background-size: cover; background-position: center; padding: 60px 30px; border-radius: 20px;">
-            <h2 style="font-size:2.5rem; color:var(--primary); margin-bottom:40px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8);">TEAM DOGBNB </h2>
-        
-            <p style="font-size:1.1rem; line-height:1.8; word-break:keep-all; text-align:left; color: white; text-shadow: 1px 1px 8px rgba(0,0,0,1);">
-                Founded in 2013 and inspired by <strong>two beloved Retrievers</strong>, <br>
-                DogBnB was born out of 13 years of firsthand experience <br>
-                and a genuine need for a pet-sitting service you can trust. <br><br>
+            <h2 style="font-size:2.5rem; color:var(--primary); margin-bottom:40px;">TEAM DOGBNB</h2>
+           <p style="font-size:1.1rem; line-height:1.8; word-break:keep-all; text-align:left; color: white; text-shadow: 1px 1px 8px rgba(0,0,0,1);">
+    Founded in 2013 and inspired by <strong>two beloved Retrievers</strong>, <br>
+    DogBnB was born out of 13 years of firsthand experience <br>
+    and a genuine need for a pet-sitting service you can trust. <br><br>
 
-                Today, we connect you with <strong>4,000+ dedicated sitters</strong> <br>
-                across Seoul, Busan, and Incheon, <br>
-                ready to serve your family with a humble heart. <br><br>
+    Today, we connect you with <strong>4,000+ dedicated sitters</strong> <br>
+    across Seoul, Busan, and Incheon, <br>
+    ready to serve your family with a humble heart. <br><br>
 
-                We are dedicated to providing a simple and reliable service <br>
-                that stays by your side forever.
-            </p>
+    We are dedicated to providing a simple and reliable service <br>
+    that stays by your side forever.
+</p>
         </div>
     </div>
 </div>
@@ -136,45 +139,37 @@
 <footer>
     <div style="max-width: 1200px; margin: 0 auto;">
         <div class="footer-menu">
-            <a href="javascript:void(0)" onclick="showBrandStory('about')">ABOUT US</a>
-            <a href="javascript:void(0)" onclick="showBrandStory('team')">TEAM DOGBNB </a>
+            <a onclick="showBrandStory('about')">ABOUT US</a>
+            <a onclick="showBrandStory('team')">TEAM DOGBNB</a>
         </div>
-
-        <div style="margin-bottom: 15px;">
-            <span style="color: #ffffff; font-size: 14px; font-weight: 600; letter-spacing: 0.5px;">
-                Copyright © 2026 DogBnB. All rights reserved.
-            </span>
-        </div>
-
-        <div style="margin-bottom: 25px;">
-            <p style="color: rgba(255, 255, 255, 0.6); font-size: 12px; line-height: 1.6; margin: 0;">
-                <strong>Rights:</strong> All contents of this service are protected under patent and trademark laws.
-            </p>
-        </div>
-
-        <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); width: 40px; margin: 20px auto;">
-
-        <div style="display: flex; justify-content: center; gap: 25px;">
-            <a href="#" style="color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 11px;">Privacy Policy</a>
-            <a href="#" style="color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 11px;">Terms of Use</a>
-            <a href="#" style="color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 11px;">Sales and Refunds</a>
-        </div>
+        <div style="margin-bottom: 10px; font-size: 14px; font-weight: 600;">Copyright © 2026 DogBnB. All rights reserved.</div>
+        <div style="margin-bottom: 20px; color: rgba(255,255,255,0.6); font-size: 11px;">All contents are protected under patent and trademark laws.</div>
+        <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); width: 40px; margin: 15px auto;">
+        
+       <div style="display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 20px;">
+    <a href="유튜브링크" target="_blank" style="display: flex; align-items: center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    
+    <a href="인스타링크" target="_blank" style="display: flex; align-items: center;">
+        <svg width="20" height="20" viewBox="0 0 24 24"><defs><radialGradient id="rg" r="150%" cx="30%" cy="107%"><stop stop-color="#fdf497" offset="0"/><stop stop-color="#fd5949" offset="0.45"/><stop stop-color="#d6249f" offset="0.6"/><stop stop-color="#285AEB" offset="0.9"/></radialGradient></defs><path fill="url(#rg)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.668-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+    </a>
+    
+    <a href="블로그링크" target="_blank" style="text-decoration: none; display: flex; align-items: center;">
+        <span style="background-color: #2DB400; color: white; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; border-radius: 3px;">N</span>
+    </a>
+</div>
     </div>
 </footer>
 
 <script>
-    /* 슬라이더 제어 */
     const slider = document.getElementById('slider');
-    const slides = document.querySelectorAll('.slide');
-    const total = slides.length;
     let index = 0;
-
     function nextSlide(){
         index++;
         slider.style.transition = 'transform 1s ease';
         slider.style.transform = `translateX(-${index * 100}%)`;
-
-        if(index === total){
+        if(index === 4){
             setTimeout(() => {
                 slider.style.transition = 'none';
                 slider.style.transform = 'translateX(0)';
@@ -184,24 +179,12 @@
     }
     setInterval(nextSlide, 4000);
 
-    /* 브랜드 스토리 레이어 제어 */
     function showBrandStory(type) {
-        const overlay = document.getElementById('brand-overlay');
-        const about = document.getElementById('content-about');
-        const team = document.getElementById('content-team');
-        
-        overlay.style.display = 'block';
+        document.getElementById('brand-overlay').style.display = 'block';
         document.body.style.overflow = 'hidden'; 
-        
-        if(type === 'about') {
-            about.style.display = 'block';
-            team.style.display = 'none';
-        } else {
-            about.style.display = 'none';
-            team.style.display = 'block';
-        }
+        document.getElementById('content-about').style.display = type === 'about' ? 'block' : 'none';
+        document.getElementById('content-team').style.display = type === 'team' ? 'block' : 'none';
     }
-
     function closeBrandStory() {
         document.getElementById('brand-overlay').style.display = 'none';
         document.body.style.overflow = 'auto';
