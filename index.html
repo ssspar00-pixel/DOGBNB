@@ -60,8 +60,12 @@
         font-size: 11px; font-weight: 900; border-radius: 3px; 
     }
 
-    /* 반응형 대응 */
+    /* 반응형 대응 (모바일 전용 설정) */
     @media (max-width:768px){
+        /* 로고 크기 조절: 120px -> 70px로 변경 */
+        .header-logo { top: 15px; left: 15px; }
+        .header-logo img { width: 70px; }
+
         .main-text { font-size: 2.2rem; }
         .sub-text { font-size: 1.2rem; }
         .app-links { bottom: 10%; top: auto; right: 50%; transform: translateX(50%); flex-direction: row; width: 90%; justify-content: center; }
@@ -120,7 +124,7 @@
 
         <div id="content-team" style="display:none; text-align:center; background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('team_bg.png'); background-size: cover; background-position: center; padding: 60px 30px; border-radius: 20px;">
             <h2 style="font-size:2.5rem; color:var(--primary); margin-bottom:40px;">TEAM DOGBNB</h2>
-           <p style="font-size:1.1rem; line-height:1.8; word-break:keep-all; text-align:left; color: white; text-shadow: 1px 1px 8px rgba(0,0,0,1);">
+            <p style="font-size:1.1rem; line-height:1.8; word-break:keep-all; text-align:left; color: white; text-shadow: 1px 1px 8px rgba(0,0,0,1);">
     Founded in 2013 and inspired by <strong>two beloved Retrievers</strong>, <br>
     DogBnB was born out of 13 years of firsthand experience <br>
     and a genuine need for a pet-sitting service you can trust. <br><br>
